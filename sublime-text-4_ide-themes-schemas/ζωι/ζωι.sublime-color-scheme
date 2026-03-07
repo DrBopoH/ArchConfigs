@@ -2,38 +2,53 @@
 	"name": "ζωι",
 	"author": "Author - Δρ.ΒοροΝ",
 	"variables": {
-		"bg": "#0f1714",
 		"fg": "#c8c2b8",
+		"fg-dim": "#6b7a73",
 
-		"red": "#ff0000",
-		"yellow": "#c4c400",
-		"orange": "#ee9900",
-		"green": "#0fc414",
-		"cyan": "#4fa3a3",
-		"indigo": "#2e3650",
-		"indigo-hard": "#3a4470",
-		"purple": "#8a6fb3",
+		"bg": "#0f1714",
 
+		"red": "#e51a28",
+		"hot": "#f54920",
+		"orange": "#f66e16",
+		
+		"gold": "#f6a702",
+		"yellow": "#f5e702",
+		"grass": "#98d609",
+		
+		"green": "#61aa06",
+		"cyan": "#00987a",
+		"blue": "#0058a4",
+		
+		"violet": "#54408f",
+		"magenta": "#682783",
+		"purple": "#8d2481",
+		
+		"pink": "#e7717d",
+
+		"tint-blue": "#adcaff",
 		"slate-blue": "#5b6ea6",  
-		"steel-blue": "#6f85c7"  
+		"steel-blue": "#6f85c7",
+		
+		"indigo": "#2e3650",
+		"indigo-hard": "#3a4470"
 	},
 
 	"globals": {
-		"foreground": "var(fg)",
-		"background": "var(bg)",
-		"caret": "color(var(fg) alpha(0.85))",
+		"foreground": "var(fg)",                                 // Текст
+		"background": "var(bg)",                                 // Фон
+		"caret": "var(fg)",                                      // Курсор
 
-		"line_highlight": "color(var(fg) alpha(0.08))",
+		"line_highlight": "var(fg-dim)",                         // Подсветка текущей строки в сайдбаре редактора
 
-		"selection": "color(var(fg) alpha(0.22))",
-		"selection_border": "color(var(fg) alpha(0.6))",
-		"inactive_selection": "color(var(indigo) alpha(0.35))",
+		"selection": "color(var(fg-dim) alpha(0.5))",            // Фон выделения
+		"selection_border": "color(var(fg-dim) alpha(1))",       // Бордер выделения
+		"inactive_selection": "var(indigo)",
 
 		"accent": "var(orange)",
-		"highlight": "var(orange)",
 
-		"find_highlight": "var(red)",
-		"find_highlight_foreground": "var(bg)",
+		"highlight": "var(orange)",                              // Бордер выделения сходств
+		"find_highlight": "var(orange)",                         // Бордер выделения по поиску сходств
+		"find_highlight_foreground": "var(bg)",                  // Фон выделения по поиску сходств
 
 		"misspelling": "var(red)",
 
@@ -50,40 +65,39 @@
 	"rules": [
 		{
 			"name": "Comment",
-			"scope": "comment, punctuation.definition.comment",
-			"foreground": "color(var(fg) alpha(0.32))",
+			"scope": "comment, punctuation.definition.comment",  // Комментарии
+			"foreground": "color(var(fg-dim) alpha(0.5))",
 			"font_style": "italic"
 		},
 
 		{
 			"name": "String",
-			"scope": "string",
-			"foreground": "color(var(green) alpha(0.9))",
-			"font_style": "italic"
+			"scope": "string",                                   // Строки
+			"foreground": "var(green)",
 		},
 		{
 			"name": "String escapes / regex",
-			"scope": "constant.character.escape, constant.other.escape, string.regexp",
-			"foreground": "var(yellow)",
+			"scope": "constant.character.escape, constant.other.escape, string.regexp", // Строковые эскейп-коды
+			"foreground": "var(grass)",
 			"font_style": "bold italic"
 		},
 
 		{
 			"name": "Numbers",
-			"scope": "constant.numeric",
-			"foreground": "var(orange)"
+			"scope": "constant.numeric",                         // Цифры и числа
+			"foreground": "var(gold)"
 		},
 		{
 			"name": "Numeric suffix / unit",
-			"scope": "storage.type.numeric",
+			"scope": "storage.type.numeric",                     // Числовые суффиксы (например комплексные числа)
 			"foreground": "var(yellow)",
 			"font_style": "italic"
 		},
 
 		{
 			"name": "Language constants",
-			"scope": "constant.language, constant.other.boolean, constant.other.null",
-			"foreground": "var(purple)",
+			"scope": "constant.language, constant.other.boolean, constant.other.null", // Булевые типы и нулл 
+			"foreground": "var(red)",
 			"font_style": "italic"
 		},
 		{
@@ -94,91 +108,90 @@
 
 		{
 			"name": "Keywords",
-			"scope": "keyword - keyword.operator, keyword.operator.word",
+			"scope": "keyword - keyword.operator, keyword.operator.word", // Ключевые слова
 			"foreground": "var(fg)",
-			"font_style": "bold italic"
+			"font_style": "bold"			
 		},
 		{
 			"name": "Operators",
-			"scope": "keyword.operator",
-			"foreground": "color(var(fg) alpha(0.75))"
-		},
-
-		{
-			"name": "Storage",
-			"scope": "storage",
-			"foreground": "var(red)",
-			"font_style": "underline"
-		},
-		{
-			"name": "Storage type",
-			"scope": "storage.type",
-			"foreground": "var(slate-blue)"
-		},
-
-		{
-			"name": "Types / classes",
-			"scope": "entity.name.type, support.type, support.class",
+			"scope": "keyword.operator",                         // Операторы
 			"foreground": "var(steel-blue)"
 		},
 
 		{
+			"name": "Storage",
+			"scope": "storage",                                  // Операторы управления памятью
+			"foreground": "var(indigo-hard)"
+		},
+		{
+			"name": "Storage type",
+			"scope": "storage.type",                             // Выделение памяти на декларацию
+			"foreground": "var(fg-dim)"
+		},
+
+		{
+			"name": "Types / classes",
+			"scope": "entity.name.type, support.type, support.class", // Классы встроенных типов и структур данных
+			"foreground": "var(cyan)"
+		},
+
+		{
 			"name": "Entity name",
-			"scope": "entity.name - (entity.name.section | entity.name.tag | entity.name.label)",
+			"scope": "entity.name - (entity.name.section | entity.name.tag | entity.name.label)", // Декларация названия класса 
 			"foreground": "var(purple)",
 			"font_style": "bold"
 		},
 
 		{
 			"name": "Function declaration",
-			"scope": "entity.name.function",
-			"foreground": "var(cyan)",
+			"scope": "entity.name.function",                     // Декларация названия функции
+			"foreground": "var(violet)",
 			"font_style": "bold"
 		},
 		{
 			"name": "Function call",
-			"scope": "variable.function, support.function, support.macro",
-			"foreground": "var(indigo-hard)"
+			"scope": "variable.function, support.function, support.macro", // Вызов функции
+			"foreground": "var(blue)"
 		},
 
 		{
 			"name": "Variables",
-			"scope": "variable, variable.other, variable.parameter",
+			"scope": "variable, variable.other, variable.parameter", // Декларация названия переменных
 			"foreground": "var(fg)"
 		},
 		{
 			"name": "Member access",
-			"scope": "variable.member, punctuation.accessor",
-			"foreground": "color(var(fg) alpha(0.85))",
+			"scope": "variable.member, punctuation.accessor",    // Точка-разделитель для доступа к методам экземпляра
+			"foreground": "var(fg-dim)",
 			"font_style": "bold"
 		},
 		{
 			"name": "Language variables",
-			"scope": "variable.language",
-			"foreground": "var(purple)",
-			"font_style": "bold"
+			"scope": "variable.language",                        // Ссылка на себя в классе
+			"foreground": "var(magenta)",
+			"font_style": "italic"
 		},
 
 		{
 			"name": "Annotations / decorators",
-			"scope": "meta.annotation, punctuation.definition.annotation, variable.annotation",
+			"scope": "meta.annotation, punctuation.definition.annotation, variable.annotation", // Аннотации типов и вызов декораторов
 			"foreground": "var(indigo-hard)"
 		},
 
 		{
 			"name": "Punctuation general",
-			"scope": "punctuation",
-			"foreground": "color(var(green) alpha(0.6))"
+			"scope": "punctuation",                              // Кавычки
+			"foreground": "var(fg-dim)"
 		},
 		{
 			"name": "Punctuation separators",
-			"scope": "punctuation.separator, punctuation.terminator",
-			"foreground": "color(var(fg) alpha(0.2))"
+			"scope": "punctuation.separator, punctuation.terminator", // Запятые и двоеточие
+			"foreground": "var(fg-dim)"
 		},
 		{
 			"name": "Punctuation sections",
-			"scope": "punctuation.section",
-			"foreground": "color(var(fg) alpha(0.25))"
+			"scope": "punctuation.section",                      //Круглые, квадратные и фигурные скобки
+			"foreground": "var(fg-dim)"
 		},
 
 		{
